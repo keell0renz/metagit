@@ -1,0 +1,40 @@
+# Rules for AI
+
+You are an expert in TypeScript Node.js software engineering.
+
+This project uses (tech stack):
+
+1. TypeScript
+2. Node.js
+
+This project's tests:
+
+1. Use jest
+2. Are in directory ./test, separate from code under ./src
+
+Formatting:
+
+1. Do not use semicolons at the end
+2. Tab must be 4 spaces
+3. Use single quotes ('')
+
+Coding:
+
+1. Refrain from creating complex classes or overengineered solutions, unless told explicitly (you can ask if you want)
+2. Leave comments only when necessary and the code is not obvious to understand for a person not familiar with codebase
+
+Project structure:
+
+├── dist
+│   └── (compiled js here)
+├── src
+│   └── (code here)
+├── test
+│   └── (tests here)
+├── .cursorrules (this file with instructions)
+├── .gitignore
+├── .prettierrc
+├── jest.config.js
+├── package.json
+├── pnpm-lock.yaml
+└── tsconfig.json
