@@ -31,5 +31,5 @@ logs/
 *.log
 
 # Build
-build/
+dist/
 out/
