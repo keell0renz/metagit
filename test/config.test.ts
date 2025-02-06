@@ -18,7 +18,6 @@ describe('loadConfig', () => {
 
         expect(config).toEqual({
             instructions: '',
-            gitadddot: true,
             model: 'gpt-4o-mini'
         })
     })
@@ -40,7 +39,6 @@ describe('loadConfig', () => {
 
         expect(config).toEqual({
             instructions: 'test instructions',
-            gitadddot: true,
             model: 'different-model'
         })
     })
@@ -52,15 +50,14 @@ describe('loadConfig', () => {
 
         const mockReadFileSync = jest.spyOn(fs, 'readFileSync')
         mockReadFileSync.mockReturnValue(JSON.stringify({
-            gitadddot: false
+            instructions: 'custom instructions'
         }))
 
         const config = loadConfig(customPath)
 
         expect(fs.existsSync).toHaveBeenCalledWith(customPath)
         expect(config).toEqual({
-            instructions: '',
-            gitadddot: false,
+            instructions: 'custom instructions',
             model: 'gpt-4o-mini'
         })
     })

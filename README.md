@@ -56,7 +56,6 @@ metagit --config ../../../my_config_file_elsewhere.json
 ```json
 {
     "instructions": "Write commits like this and like that...", // Instructions for AI
-    "gitadddot": true, // Whether program does 'git add .' before commit, can be overriden with --noadd or --add in CLI
     "model": "gpt-4o-mini" // AI Model, by default 'gpt-4o-mini'
 }
 ```
