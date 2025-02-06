@@ -13,7 +13,7 @@ const defaultConfig: Config = {
     model: 'gpt-4o-mini',
 }
 
-const loadConfig = (external_path?: string): Config => {
+export const loadConfig = (external_path?: string): Config => {
     const configPath =
         external_path ?? path.resolve(process.cwd(), 'metagit.json')
     if (fs.existsSync(configPath)) {
