@@ -1,18 +1,22 @@
 {
-  "name": "example-ts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "metagit",
+  "version": "0.0.1",
+  "description": "MetaGit is a program which automates git commit naming with AI.",
+  "main": "dist/src/index.js",
+  "bin": {
+    "metagit": "./dist/src/index.js"
+  },
   "scripts": {
     "start": "node dist/src/index.js",
     "build": "tsc",
     "dev": "ts-node src/index.ts",
     "test": "jest",
-    "format": "prettier --write \"src/**/*.{ts,tsx,json}\" \"test/**/*.{ts,tsx,json}\""
+    "format": "prettier --write \"src/**/*.{ts,tsx,json}\" \"test/**/*.{ts,tsx,json}\"",
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.1",
