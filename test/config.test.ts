@@ -17,8 +17,10 @@ describe('loadConfig', () => {
         const config = loadConfig()
 
         expect(config).toEqual({
-            instructions: '',
-            model: 'gpt-4o-mini'
+            instructions:
+                'Please keep the message concise, modest and descriptive',
+            model: 'gpt-4o-mini',
+            diff_character_limit: 32000,
         })
     })
 
@@ -27,10 +29,13 @@ describe('loadConfig', () => {
         mockExistsSync.mockReturnValue(true)
 
         const mockReadFileSync = jest.spyOn(fs, 'readFileSync')
-        mockReadFileSync.mockReturnValue(JSON.stringify({
-            instructions: 'test instructions',
-            model: 'different-model'
-        }))
+        mockReadFileSync.mockReturnValue(
+            JSON.stringify({
+                instructions: 'test instructions',
+                model: 'different-model',
+                diff_character_limit: 1000,
+            })
+        )
 
         const mockResolve = jest.spyOn(path, 'resolve')
         mockResolve.mockReturnValue('/fake/path/metagit.json')
@@ -39,26 +44,30 @@ describe('loadConfig', () => {
 
         expect(config).toEqual({
             instructions: 'test instructions',
-            model: 'different-model'
+            model: 'different-model',
+            diff_character_limit: 1000,
         })
     })
 
-    test('uses provided config path', () => {
+    test('uses provided config path and merges with defaults', () => {
         const customPath = '/custom/path/config.json'
         const mockExistsSync = jest.spyOn(fs, 'existsSync')
         mockExistsSync.mockReturnValue(true)
 
         const mockReadFileSync = jest.spyOn(fs, 'readFileSync')
-        mockReadFileSync.mockReturnValue(JSON.stringify({
-            instructions: 'custom instructions'
-        }))
+        mockReadFileSync.mockReturnValue(
+            JSON.stringify({
+                instructions: 'custom instructions',
+            })
+        )
 
         const config = loadConfig(customPath)
 
         expect(fs.existsSync).toHaveBeenCalledWith(customPath)
         expect(config).toEqual({
             instructions: 'custom instructions',
-            model: 'gpt-4o-mini'
+            model: 'gpt-4o-mini',
+            diff_character_limit: 32000,
         })
     })
 })
