@@ -44,18 +44,3 @@ fix: fixed some bugs at ...
 
 ? Proceed (y/n)
 ```
-
-> If you want to customize...
-
-💡 **Note:** By default it looks for `metagit.json` in current working directory
-
-```sh
-metagit --config ../../../my_config_file_elsewhere.json
-```
-
-```json
-{
-    "instructions": "Write commits like this and like that...", // Instructions for AI
-    "model": "gpt-4o-mini" // AI Model, by default 'gpt-4o-mini'
-}
-```
