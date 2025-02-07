@@ -1,14 +1,16 @@
 import fs from 'fs'
 import path from 'path'
 
-interface Config {
+export interface Config {
     instructions?: string
     model?: string
+    diff_character_limit?: number
 }
 
 const defaultConfig: Config = {
-    instructions: '',
+    instructions: 'Please keep the message concise, modest and descriptive',
     model: 'gpt-4o-mini',
+    diff_character_limit: 32000,
 }
 
 export const loadConfig = (external_path?: string): Config => {

@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-// For compiled javascript file
+// For compiled javascript file'
 
-console.log('Hello World!')
+process.removeAllListeners('warning')
