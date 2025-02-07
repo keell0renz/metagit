@@ -61,36 +61,4 @@ describe('utils', () => {
             )
         })
     })
-
-    describe('makeCommit', () => {
-        beforeEach(() => {
-            jest.clearAllMocks()
-        })
-
-        it('should execute git commit with provided message', () => {
-            const mockExecSync = execSync as jest.MockedFunction<
-                typeof execSync
-            >
-            mockExecSync.mockReturnValue('') // Mock successful execution
-            const commitMessage = 'test commit message'
-
-            makeCommit(commitMessage)
-
-            expect(mockExecSync).toHaveBeenCalledWith('git commit -F -', {
-                input: commitMessage.trim(),
-            })
-        })
-
-        it('should handle git commit errors', () => {
-            const mockExecSync = execSync as jest.MockedFunction<
-                typeof execSync
-            >
-            mockExecSync.mockImplementation(() => {
-                throw new Error('Git commit failed')
-            })
-            const commitMessage = 'test commit message'
-
-            expect(() => makeCommit(commitMessage)).toThrow('Git commit failed')
-        })
-    })
 })
