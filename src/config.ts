@@ -19,8 +19,8 @@ export const loadConfig = (external_path?: string): Config => {
             fs.readFileSync(configPath, 'utf8')
         )
         return {
-            instructions: fileConfig.instructions ?? defaultConfig.instructions,
-            model: fileConfig.model ?? defaultConfig.model,
+            ...defaultConfig,
+            ...fileConfig,
         }
     }
     return defaultConfig
