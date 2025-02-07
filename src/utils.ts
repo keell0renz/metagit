@@ -35,6 +35,19 @@ export const filterLockFiles = (diff: string): string => {
     return filteredLines.join('\n')
 }
 
-export const makeCommit = (input: string) => {
+export const makeCommit = (input: string): void => {
     execSync(`git commit -F -`, { input: input.trim() })
+}
+
+export const getDiff = (): string => {
+    const orig_diff = execSync('git diff --staged').toString()
+    const filtered_diff = filterLockFiles(orig_diff)
+
+    if (orig_diff != filtered_diff) {
+        console.log(
+            "Changes detected in lock files. These changes will be included in the commit but won't be analyzed for commit message generation."
+        )
+    }
+
+    return filtered_diff
 }
