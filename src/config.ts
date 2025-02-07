@@ -13,7 +13,10 @@ const defaultConfig: Config = {
     diff_character_limit: 32000,
 }
 
-export const loadConfig = (external_path?: string): Config => {
+export const loadConfig = (
+    external_path?: string,
+    cliArgs?: Partial<Config>
+): Config => {
     const configPath =
         external_path ?? path.resolve(process.cwd(), 'metagit.json')
     if (fs.existsSync(configPath)) {
@@ -23,7 +26,11 @@ export const loadConfig = (external_path?: string): Config => {
         return {
             ...defaultConfig,
             ...fileConfig,
+            ...cliArgs,
         } as Config
     }
-    return defaultConfig as Config
+    return {
+        ...defaultConfig,
+        ...cliArgs,
+    } as Config
 }

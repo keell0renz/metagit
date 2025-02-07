@@ -70,4 +70,31 @@ describe('loadConfig', () => {
             diff_character_limit: 32000,
         })
     })
+
+    test('cli args override file and default config', () => {
+        const mockExistsSync = jest.spyOn(fs, 'existsSync')
+        mockExistsSync.mockReturnValue(true)
+
+        const mockReadFileSync = jest.spyOn(fs, 'readFileSync')
+        mockReadFileSync.mockReturnValue(
+            JSON.stringify({
+                instructions: 'file instructions',
+                model: 'file-model',
+                diff_character_limit: 1000,
+            })
+        )
+
+        const cliArgs = {
+            model: 'cli-model',
+            diff_character_limit: 2000,
+        }
+
+        const config = loadConfig(undefined, cliArgs)
+
+        expect(config).toEqual({
+            instructions: 'file instructions',
+            model: 'cli-model',
+            diff_character_limit: 2000,
+        })
+    })
 })
