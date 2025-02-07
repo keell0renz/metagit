@@ -8,7 +8,7 @@ const openai = new OpenAI({
 export const generateCommitMessage = async (
     diff: string,
     userMessage: string,
-    config: Required<Config>
+    config: Config
 ): Promise<string> => {
     const prompt = `
     Your job is to write git commit messages based on the git diff, user's message (optional) and user's instructions.

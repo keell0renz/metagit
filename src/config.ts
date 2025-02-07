@@ -2,9 +2,9 @@ import fs from 'fs'
 import path from 'path'
 
 export interface Config {
-    instructions?: string
-    model?: string
-    diff_character_limit?: number
+    instructions: string
+    model: string
+    diff_character_limit: number
 }
 
 const defaultConfig: Config = {
@@ -13,17 +13,17 @@ const defaultConfig: Config = {
     diff_character_limit: 32000,
 }
 
-export const loadConfig = (external_path?: string): Required<Config> => {
+export const loadConfig = (external_path?: string): Config => {
     const configPath =
         external_path ?? path.resolve(process.cwd(), 'metagit.json')
     if (fs.existsSync(configPath)) {
-        const fileConfig: Config = JSON.parse(
+        const fileConfig: Partial<Config> = JSON.parse(
             fs.readFileSync(configPath, 'utf8')
         )
         return {
             ...defaultConfig,
             ...fileConfig,
-        } as Required<Config>
+        } as Config
     }
-    return defaultConfig as Required<Config>
+    return defaultConfig as Config
 }
