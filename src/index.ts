@@ -13,7 +13,7 @@ program
     .version('0.0.1')
 
 program
-    .argument('[userMessage', "Optional user's message which describes commit.")
+    .argument('[userMessage]', "Optional user's message which describes commit.")
     .option('--instructions <instructions>', 'Commit message generation instructions to AI.')
     .option('--model <model>', 'OpenAI model to use.')
     .option('--diff_character_limit <number>', 'Character limit of git diff.', (value) => parseInt(value, 10))
