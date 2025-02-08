@@ -1,5 +1,5 @@
 {
-  "name": "metagit",
+  "name": "@keell0renz/metagit",
   "version": "0.0.1",
   "description": "MetaGit is a program which automates git commit naming with AI.",
   "main": "dist/src/index.js",

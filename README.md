@@ -13,7 +13,7 @@ export OPENAI_API_KEY=<key>
 ### 2. Install from repository
 
 ```sh
-npm install -g metagit
+npm install -g @keell0renz/metagit
 ```
 
 ### 3. Use
