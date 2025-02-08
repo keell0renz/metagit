@@ -26,7 +26,6 @@ metagit
 
 ```txt
 Added something...
-
 ? Do you want to proceed with this commit message? (Y/n)
 ```
 
