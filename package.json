@@ -12,10 +12,28 @@
     "dev": "ts-node src/index.ts",
     "test": "jest",
     "format": "prettier --write \"src/**/*.{ts,tsx,json}\" \"test/**/*.{ts,tsx,json}\"",
-    "postinstall": "npm run build"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "git",
+    "commit",
+    "ai",
+    "automation",
+    "cli"
+  ],
+  "author": {
+    "name": "Bohdan Agarkov",
+    "email": "bogdan122305@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keell0renz/metagit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/keell0renz/metagit/issues"
+  },
+  "homepage": "https://github.com/keell0renz/metagit",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.14",

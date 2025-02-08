@@ -1,0 +1,8 @@
+src/
+test/
+.prettierrc
+.cursorrules
+jest.config.js
+tsconfig.json
+.gitignore
+*.test.ts 
