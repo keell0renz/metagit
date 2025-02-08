@@ -8,8 +8,7 @@ export interface Config {
 }
 
 const defaultConfig: Config = {
-    instructions:
-        `Please be concise, general, and make message under 10 words. 
+    instructions: `Please be concise, general, and make message under 10 words. 
         Also try to write in past tense, like what is done.
         If there are many details which are not related to each other, produce very general messages.`,
     model: 'gpt-4o-mini',

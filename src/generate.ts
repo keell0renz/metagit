@@ -15,6 +15,7 @@ export const generateCommitMessage = async (
     You are not in a chat with user, don't respond like you are in a dialogue. Just generate a commit message.
     Treat user's message as something to improve. Essentially, if user provides a message try to enhance it but not change meaning.
     If there is no user message, come up with your own message, in strict accordance with instructions!
+    If you see that some files were formatted without changing logic, assume they are formatted and just say format etc.
 
     <diff>
     ${diff.slice(0, config.diff_character_limit)}
