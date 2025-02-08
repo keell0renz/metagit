@@ -11,23 +11,19 @@ export const checkGitRepository = (): boolean => {
     }
 }
 
-export const filterLockFiles = (diff: string): string => {
+export const filterLockFiles = (diff: string) => {
     const lines = diff.split('\n')
     let isLockFile = false
-    const filteredLines = lines
-        .filter((line) => {
-            const trimmedLine = line.trim()
-            if (trimmedLine.match(/^diff --git a\/(.*\/)?(yarn\.lock|pnpm-lock\.yaml|package-lock\.json)/)) {
-                isLockFile = true
-                return false
-            }
-            if (trimmedLine.startsWith('diff --git')) {
-                isLockFile = false
-                return true
-            }
-            return !isLockFile
-        })
-        .map((line) => line.trim())
+    const filteredLines = lines.filter((line) => {
+        if (line.match(/^diff --git a\/(.*\/)?(yarn\.lock|pnpm-lock\.yaml|package-lock\.json)/)) {
+            isLockFile = true
+            return false
+        }
+        if (isLockFile && line.startsWith('diff --git')) {
+            isLockFile = false
+        }
+        return !isLockFile
+    })
     return filteredLines.join('\n')
 }
 
@@ -43,6 +39,11 @@ export const getDiff = (): string => {
         console.log(
             "Changes detected in lock files. These changes will be included in the commit but won't be analyzed for commit message generation."
         )
+    }
+
+    if (!filtered_diff.trim()) {
+        console.log('No changes to commit! Maybe you forgot to git add .?')
+        process.exit(1)
     }
 
     return filtered_diff

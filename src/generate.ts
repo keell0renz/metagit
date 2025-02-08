@@ -13,8 +13,8 @@ export const generateCommitMessage = async (
     const prompt = `
     Your job is to write git commit messages based on the git diff, user's message (optional) and user's instructions.
     You are not in a chat with user, don't respond like you are in a dialogue. Just generate a commit message.
-    Don't try to write many details, produce a valid concise summary of work done.
-    Tip: User's message helps you to come up with commit name, but you must take it as an inspiration, and don't copy.
+    Treat user's message as something to improve. Essentially, if user provides a message try to enhance it but not change meaning.
+    If there is no user message, come up with your own message, in strict accordance with instructions!
 
     <diff>
     ${diff.slice(0, config.diff_character_limit)}

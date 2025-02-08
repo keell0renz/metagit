@@ -27,24 +27,16 @@ describe('utils', () => {
 
     describe('filterLockFiles', () => {
         it('should filter out lock file changes', () => {
-            const diff = `diff --git a/package-lock.json b/package-lock.json
-                        some changes
-                        diff --git a/src/index.ts b/src/index.ts
-                        actual changes`
+            const diff =
+                'diff --git a/package-lock.json b/package-lock.json\nsome changes\ndiff --git a/src/index.ts b/src/index.ts\nactual changes'
 
             const result = filterLockFiles(diff)
             expect(result).toBe('diff --git a/src/index.ts b/src/index.ts\nactual changes')
         })
 
         it('should handle multiple lock files', () => {
-            const diff = `diff --git a/yarn.lock b/yarn.lock
-                        lock changes
-                        diff --git a/src/file1.ts b/src/file1.ts
-                        changes1
-                        diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
-                        more lock changes
-                        diff --git a/src/file2.ts b/src/file2.ts
-                        changes2`
+            const diff =
+                'diff --git a/yarn.lock b/yarn.lock\nlock changes\ndiff --git a/src/file1.ts b/src/file1.ts\nchanges1\ndiff --git a/pnpm-lock.yaml b/pnpm-lock.yaml\nmore lock changes\ndiff --git a/src/file2.ts b/src/file2.ts\nchanges2'
 
             const result = filterLockFiles(diff)
             expect(result).toBe(
