@@ -28,7 +28,7 @@ export const filterLockFiles = (diff: string) => {
 }
 
 export const makeCommit = (input: string): void => {
-    execSync(`git commit -F -`, { input: input.trim() })
+    execSync('git commit -m ' + JSON.stringify(input.trim()))
 }
 
 export const getDiff = (): string => {

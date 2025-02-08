@@ -35,7 +35,6 @@ program
 
         const message = await generateCommitMessage(diff, userMessage, config)
 
-        console.log('Generated commit message:')
         console.log(message)
 
         const { confirm } = await inquirer.prompt([
