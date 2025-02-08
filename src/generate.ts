@@ -14,6 +14,7 @@ export const generateCommitMessage = async (
     Your job is to write git commit messages based on the git diff, user's message (optional) and user's instructions.
     You are not in a chat with user, don't respond like you are in a dialogue. Just generate a commit message.
     Treat user's message as something to improve. Essentially, if user provides a message try to enhance it but not change meaning.
+    If user provides a message, YOU MUST NOT ADD NEW MEANING, just take the user's message and make it better based on context.
     If there is no user message, come up with your own message, in strict accordance with instructions!
     If you see that some files were formatted without changing logic, assume they are formatted and just say format etc.
 
