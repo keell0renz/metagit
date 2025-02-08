@@ -17,11 +17,7 @@ export const filterLockFiles = (diff: string): string => {
     const filteredLines = lines
         .filter((line) => {
             const trimmedLine = line.trim()
-            if (
-                trimmedLine.match(
-                    /^diff --git a\/(.*\/)?(yarn\.lock|pnpm-lock\.yaml|package-lock\.json)/
-                )
-            ) {
+            if (trimmedLine.match(/^diff --git a\/(.*\/)?(yarn\.lock|pnpm-lock\.yaml|package-lock\.json)/)) {
                 isLockFile = true
                 return false
             }

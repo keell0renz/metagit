@@ -17,8 +17,7 @@ describe('loadConfig', () => {
         const config = loadConfig()
 
         expect(config).toEqual({
-            instructions:
-                'Please keep the message concise, modest and descriptive',
+            instructions: 'Please keep the message concise, modest and descriptive',
             model: 'gpt-4o-mini',
             diff_character_limit: 32000,
         })

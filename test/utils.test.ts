@@ -6,24 +6,17 @@ jest.mock('child_process')
 describe('utils', () => {
     describe('checkGitRepository', () => {
         it('should return true when in git repository', () => {
-            const mockExecSync = execSync as jest.MockedFunction<
-                typeof execSync
-            >
+            const mockExecSync = execSync as jest.MockedFunction<typeof execSync>
             mockExecSync.mockReturnValue('true')
 
             expect(checkGitRepository()).toBe(true)
-            expect(mockExecSync).toHaveBeenCalledWith(
-                'git rev-parse --is-inside-work-tree',
-                {
-                    encoding: 'utf-8',
-                }
-            )
+            expect(mockExecSync).toHaveBeenCalledWith('git rev-parse --is-inside-work-tree', {
+                encoding: 'utf-8',
+            })
         })
 
         it('should return false when not in git repository', () => {
-            const mockExecSync = execSync as jest.MockedFunction<
-                typeof execSync
-            >
+            const mockExecSync = execSync as jest.MockedFunction<typeof execSync>
             mockExecSync.mockImplementation(() => {
                 throw new Error('Not a git repository')
             })
@@ -40,9 +33,7 @@ describe('utils', () => {
                         actual changes`
 
             const result = filterLockFiles(diff)
-            expect(result).toBe(
-                'diff --git a/src/index.ts b/src/index.ts\nactual changes'
-            )
+            expect(result).toBe('diff --git a/src/index.ts b/src/index.ts\nactual changes')
         })
 
         it('should handle multiple lock files', () => {
