@@ -33,7 +33,7 @@ program
 
         const diff = getDiff()
 
-        const message = await generateCommitMessage(diff, userMessage, config)
+        const message = await generateCommitMessage(diff, config, userMessage)
 
         console.log(message)
 
