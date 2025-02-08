@@ -5,6 +5,7 @@ import { Command } from 'commander'
 import { checkGitRepository, getDiff, makeCommit } from './utils'
 import { loadConfig } from './config'
 import { generateCommitMessage } from './generate'
+import inquirer from 'inquirer'
 
 process.removeAllListeners('warning')
 
@@ -34,10 +35,25 @@ program
 
         const message = await generateCommitMessage(diff, userMessage, config)
 
+        console.log('Generated commit message:')
         console.log(message)
-        process.exit(0)
 
-        makeCommit(message)
+        const { confirm } = await inquirer.prompt([
+            {
+                type: 'confirm',
+                name: 'confirm',
+                message: 'Do you want to proceed with this commit message?',
+                default: true,
+            },
+        ])
+
+        if (confirm) {
+            makeCommit(message)
+            console.log('Commit created successfully!')
+        } else {
+            console.log('Commit cancelled.')
+            process.exit(0)
+        }
     })
 
 program.parse(process.argv)
