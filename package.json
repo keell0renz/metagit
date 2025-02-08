@@ -12,8 +12,8 @@
     "dev": "ts-node src/index.ts",
     "test": "jest",
     "format": "prettier --write \"src/**/*.{ts,tsx,json}\" \"test/**/*.{ts,tsx,json}\"",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test"
+    "prepare": "pnpm run build",
+    "prepublishOnly": "pnpm test"
   },
   "keywords": [
     "git",
