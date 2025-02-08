@@ -17,9 +17,11 @@ describe('loadConfig', () => {
         const config = loadConfig()
 
         expect(config).toEqual({
-            instructions: 'Please keep the message concise, modest and descriptive',
+            instructions: `Please be concise, general, and make message under 10 words. 
+        Also try to write in past tense, like what is done.
+        If there are many details which are not related to each other, produce very general messages.`,
             model: 'gpt-4o-mini',
-            diff_character_limit: 32000,
+            diff_character_limit: 64000,
         })
     })
 
@@ -66,7 +68,7 @@ describe('loadConfig', () => {
         expect(config).toEqual({
             instructions: 'custom instructions',
             model: 'gpt-4o-mini',
-            diff_character_limit: 32000,
+            diff_character_limit: 64000,
         })
     })
 
