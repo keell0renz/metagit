@@ -5,14 +5,16 @@ export interface Config {
     instructions: string
     model: string
     diff_character_limit: number
+    provider: 'openai' | 'groq'
 }
 
 const defaultConfig: Config = {
     instructions: `Please be concise, general, and make message under 10 words. 
         Also try to write in past tense, like what is done.
         If there are many details which are not related to each other, produce very general messages.`,
-    model: 'gpt-4o-mini',
+    model: 'llama-3.1-8b-instant',
     diff_character_limit: 64000,
+    provider: 'groq',
 }
 
 export const loadConfig = (external_path?: string, cliArgs?: Partial<Config>): Config => {

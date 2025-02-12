@@ -1,6 +1,6 @@
 {
   "name": "@keell0renz/metagit",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "MetaGit is a program which automates git commit naming with AI.",
   "main": "dist/src/index.js",
   "bin": {
@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "commander": "^13.1.0",
+    "groq-sdk": "^0.15.0",
     "inquirer": "^12.4.1",
     "openai": "^4.83.0"
   }
