@@ -14,7 +14,7 @@ const program = new Command()
 program
     .name('metagit')
     .description('MetaGit is a program which automates git commit naming with AI.')
-    .version('0.0.1')
+    .version('0.0.3')
 
 program
     .argument('[userMessage...]', "Optional user's message which describes commit.")
