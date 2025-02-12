@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { loadConfig } from '../src/config'
-
+import { Config } from '../src/config'
 jest.mock('fs')
 jest.mock('path')
 
@@ -20,8 +20,9 @@ describe('loadConfig', () => {
             instructions: `Please be concise, general, and make message under 10 words. 
         Also try to write in past tense, like what is done.
         If there are many details which are not related to each other, produce very general messages.`,
-            model: 'gpt-4o-mini',
+            model: 'llama-3.1-8b-instant',
             diff_character_limit: 64000,
+            provider: 'groq'
         })
     })
 
@@ -35,6 +36,7 @@ describe('loadConfig', () => {
                 instructions: 'test instructions',
                 model: 'different-model',
                 diff_character_limit: 1000,
+                provider: 'openai'
             })
         )
 
@@ -47,6 +49,7 @@ describe('loadConfig', () => {
             instructions: 'test instructions',
             model: 'different-model',
             diff_character_limit: 1000,
+            provider: 'openai'
         })
     })
 
@@ -67,8 +70,9 @@ describe('loadConfig', () => {
         expect(fs.existsSync).toHaveBeenCalledWith(customPath)
         expect(config).toEqual({
             instructions: 'custom instructions',
-            model: 'gpt-4o-mini',
+            model: 'llama-3.1-8b-instant',
             diff_character_limit: 64000,
+            provider: 'groq'
         })
     })
 
@@ -82,12 +86,14 @@ describe('loadConfig', () => {
                 instructions: 'file instructions',
                 model: 'file-model',
                 diff_character_limit: 1000,
+                provider: 'openai'
             })
         )
 
-        const cliArgs = {
+        const cliArgs: Partial<Config> = {
             model: 'cli-model',
             diff_character_limit: 2000,
+            provider: 'groq'
         }
 
         const config = loadConfig(undefined, cliArgs)
@@ -96,6 +102,7 @@ describe('loadConfig', () => {
             instructions: 'file instructions',
             model: 'cli-model',
             diff_character_limit: 2000,
+            provider: 'groq'
         })
     })
 })
