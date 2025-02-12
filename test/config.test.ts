@@ -22,7 +22,7 @@ describe('loadConfig', () => {
         If there are many details which are not related to each other, produce very general messages.`,
             model: 'llama-3.1-8b-instant',
             diff_character_limit: 64000,
-            provider: 'groq'
+            provider: 'groq',
         })
     })
 
@@ -36,7 +36,7 @@ describe('loadConfig', () => {
                 instructions: 'test instructions',
                 model: 'different-model',
                 diff_character_limit: 1000,
-                provider: 'openai'
+                provider: 'openai',
             })
         )
 
@@ -49,7 +49,7 @@ describe('loadConfig', () => {
             instructions: 'test instructions',
             model: 'different-model',
             diff_character_limit: 1000,
-            provider: 'openai'
+            provider: 'openai',
         })
     })
 
@@ -72,7 +72,7 @@ describe('loadConfig', () => {
             instructions: 'custom instructions',
             model: 'llama-3.1-8b-instant',
             diff_character_limit: 64000,
-            provider: 'groq'
+            provider: 'groq',
         })
     })
 
@@ -86,14 +86,14 @@ describe('loadConfig', () => {
                 instructions: 'file instructions',
                 model: 'file-model',
                 diff_character_limit: 1000,
-                provider: 'openai'
+                provider: 'openai',
             })
         )
 
         const cliArgs: Partial<Config> = {
             model: 'cli-model',
             diff_character_limit: 2000,
-            provider: 'groq'
+            provider: 'groq',
         }
 
         const config = loadConfig(undefined, cliArgs)
@@ -102,7 +102,7 @@ describe('loadConfig', () => {
             instructions: 'file instructions',
             model: 'cli-model',
             diff_character_limit: 2000,
-            provider: 'groq'
+            provider: 'groq',
         })
     })
 })
