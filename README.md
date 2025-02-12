@@ -7,6 +7,8 @@ MetaGit looks at your `git diff`, and instructs a language model to write a comm
 ### 1. Set environment variables (into your interpreter config)
 
 ```sh
+export GROQ_API_KEY=<key>
+# or if you use --provider openai
 export OPENAI_API_KEY=<key>
 ```
 
