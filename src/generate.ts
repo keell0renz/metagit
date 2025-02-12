@@ -1,15 +1,18 @@
 import OpenAI from 'openai'
 import { Config } from './config'
-
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-})
+import { checkEnvVariable } from './utils'
 
 export const generateCommitMessage = async (
     diff: string,
     config: Config,
     userMessage?: string
 ): Promise<string> => {
+    checkEnvVariable('OPENAI_API_KEY')
+
+    const openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+    })
+
     const prompt = `
     Your job is to write git commit messages based on the git diff, user's message (optional) and user's instructions.
     You are not in a chat with user, don't respond like you are in a dialogue. Just generate a commit message.

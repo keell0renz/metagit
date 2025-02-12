@@ -48,3 +48,10 @@ export const getDiff = (): string => {
 
     return filtered_diff
 }
+
+export const checkEnvVariable = (variable: string): void => {
+    if (!process.env[variable]) {
+        console.error(`Environment variable ${variable} is not set!`)
+        process.exit(1)
+    }
+}
