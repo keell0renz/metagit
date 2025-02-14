@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { loadConfig } from '../src/config'
 import { Config } from '../src/config'
+
 jest.mock('fs')
 jest.mock('path')
 
